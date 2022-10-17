@@ -1,0 +1,16 @@
+POST https://phone-book.fly.dev/api/persons
+content-type: application/json
+
+{
+"name": "prueba2",
+"number": "1234567"
+}
+###
+
+POST http://localhost:3001/api/persons
+content-type: application/json
+
+{
+"name": "J",
+"number": "09-1234556"
+}

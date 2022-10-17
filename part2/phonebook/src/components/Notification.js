@@ -1,6 +1,4 @@
 export const Notification = ({ notificationName, errorMsg }) => {
-  console.log(notificationName);
-  console.log(errorMsg);
   if (!notificationName && !errorMsg) {
     return null;
   } else if (notificationName) {

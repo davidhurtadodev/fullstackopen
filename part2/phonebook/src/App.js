@@ -23,14 +23,21 @@ const App = () => {
     const repeatedNameIndex = persons.findIndex(
       (person) => person.name.toLowerCase() === newName.toLowerCase()
     );
+
     if (repeatedNameIndex === -1) {
       const newPersonObject = { name: newName, number: newNumber };
-      numbersService.create(newPersonObject).then((data) => {
-        setPersons([...persons, data]);
-        setNotificationName(data.name);
-        setNewName('');
-        setNewNumber('');
-      });
+      numbersService
+        .create(newPersonObject)
+        .then((data) => {
+          setPersons([...persons, data]);
+          setNotificationName(data.name);
+          setNewName('');
+          setNewNumber('');
+        })
+        .catch((err) => {
+          console.error(err.response.data.error);
+          setErrorMsg(err.response.data.error);
+        });
     } else {
       if (
         window.confirm(
@@ -38,9 +45,10 @@ const App = () => {
         )
       ) {
         const changedEntry = {
-          ...persons[repeatedNameIndex],
+          name: persons[repeatedNameIndex].name,
           number: newNumber,
         };
+
         numbersService
           .replaceNumber(persons[repeatedNameIndex].id, changedEntry)
           .then((data) =>
@@ -49,7 +57,11 @@ const App = () => {
                 person.id !== persons[repeatedNameIndex].id ? person : data
               )
             )
-          );
+          )
+          .catch((err) => {
+            console.error(err.response.data.error);
+            setErrorMsg(err.response.data.error);
+          });
       }
     }
   };
@@ -111,11 +123,13 @@ const App = () => {
         />
       </Form>
       <h2>Numbers</h2>
-      <Numbers
-        filter={filter}
-        persons={persons}
-        handlerDeleteNumber={handlerDeleteNumber}
-      />
+      {persons.length !== 0 ? (
+        <Numbers
+          filter={filter}
+          persons={persons}
+          handlerDeleteNumber={handlerDeleteNumber}
+        />
+      ) : null}
     </div>
   );
 };
