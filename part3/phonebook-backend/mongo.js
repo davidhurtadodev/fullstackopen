@@ -38,7 +38,7 @@ if (process.argv.length > 3) {
   console.log('here1');
   mongoose
     .connect(url)
-    .then((result) => {
+    .then(() => {
       console.log('connected');
 
       const person = new Person({

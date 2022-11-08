@@ -1,12 +1,11 @@
 POST http://localhost:3003/api/blogs
 content-type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QxIiwiaWQiOiI2MzViZDI1MDQwMDg1ZjViYjZlNmI2YmUiLCJpYXQiOjE2NjY5NjQzNDZ9.UImDa_jo6n8TtQ1B0mAD1dwfEHbLfh8SrPAbcqg0Vww
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOiI2MzYxMGM1YzYzMzgzZDY3NmU2OWFjMGYiLCJpYXQiOjE2NjczODA5MTB9.sOhv-A_w-ZhrIUIjuq8XMQNsP5mqLewsLyPP0WLW1aE
 
 {
-    "title": "test middleware",
-    "url": "www.facebook.com",
-    "likes": 1,
-    "userId": "635bd25040085f5bb6e6b6be"
+    "title": "prueba back",
+    "author": "David",
+    "url": "www.facebook.com"
+   
     
-  
 }

@@ -22,6 +22,7 @@ blogsRouter.get('/api/blogs', (request, response) => {
 });
 
 blogsRouter.post('/api/blogs', async (request, response) => {
+  console.log('create');
   const { body } = request;
 
   // const decodedToken = await jwt.verify(request.token, process.env.SECRET);
@@ -30,7 +31,7 @@ blogsRouter.post('/api/blogs', async (request, response) => {
     return response.status(401).json({ error: 'token missing or invalid' });
   }
 
-  const user = await User.findById(body.userId);
+  const user = await User.findById(request.user.id);
 
   if (body.title === undefined) {
     return response.status(400).json({
@@ -41,7 +42,8 @@ blogsRouter.post('/api/blogs', async (request, response) => {
   const blog = new Blog({
     url: body.url,
     title: body.title,
-    author: request.user.username,
+    // author: request.user.username,
+    author: body.author,
     likes: body.likes || 0,
     user: user._id,
   });
@@ -53,8 +55,6 @@ blogsRouter.post('/api/blogs', async (request, response) => {
 });
 
 blogsRouter.delete('/api/blogs/:id', async (request, response, next) => {
-  // const { token } = request;
-  // const decodedToken = jwt.verify(token, process.env.SECRET);
   if (!request.user.id) {
     return response.status(401).json({ error: 'token missing or invalid' });
   }
@@ -75,10 +75,18 @@ blogsRouter.delete('/api/blogs/:id', async (request, response, next) => {
 });
 
 // eslint-disable-next-line consistent-return
-blogsRouter.put('/api/blogs/:id', (request, response, next) => {
-  const { likes } = request.body;
+blogsRouter.put('/api/blogs/:id', async (request, response, next) => {
+  const { likes, user, author, title, url } = request.body;
 
   if (typeof likes !== 'number') return response.status(400).end();
+  console.log(request.params.id);
+  const blog = {
+    likes: likes,
+    user: user,
+    author: author,
+    title: title,
+    url: url,
+  };
 
   Blog.findByIdAndUpdate(request.params.id, { likes }, { new: true })
     .then((updatedEntry) => {

@@ -3,18 +3,6 @@
 /* eslint-disable no-unused-expressions */
 const mongoose = require('mongoose');
 
-const url = process.env.MONGODB_URI;
-
-console.log('conecting to', url);
-mongoose
-  .connect(url)
-  .then(() => {
-    console.log('conected to MongoDB');
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
 const personSchema = new mongoose.Schema({
   name: {
     type: String,
