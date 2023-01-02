@@ -22,7 +22,6 @@ blogsRouter.get('/api/blogs', (request, response) => {
 });
 
 blogsRouter.post('/api/blogs', async (request, response) => {
-  console.log('create');
   const { body } = request;
 
   // const decodedToken = await jwt.verify(request.token, process.env.SECRET);
@@ -81,11 +80,11 @@ blogsRouter.put('/api/blogs/:id', async (request, response, next) => {
   if (typeof likes !== 'number') return response.status(400).end();
   console.log(request.params.id);
   const blog = {
-    likes: likes,
-    user: user,
-    author: author,
-    title: title,
-    url: url,
+    likes,
+    user,
+    author,
+    title,
+    url,
   };
 
   Blog.findByIdAndUpdate(request.params.id, { likes }, { new: true })
