@@ -3,17 +3,17 @@
     {
       "content": "Adding manpower to a late software project makes it later!",
       "id": "21149",
-      "votes": 2
+      "votes": 3
     },
     {
       "content": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
       "id": "69581",
-      "votes": 7
+      "votes": 15
     },
     {
       "content": "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
       "id": "36975",
-      "votes": 5
+      "votes": 9
     },
     {
       "content": "Premature optimization is the root of all evil.",
@@ -27,18 +27,23 @@
     },
     {
       "content": "probando",
-      "votes": 0,
+      "votes": 3,
       "id": "w0idGUL"
     },
     {
       "content": "prueba thunk",
-      "votes": 0,
+      "votes": 1,
       "id": "QDYsEV0"
     },
     {
       "content": "pruebo notificaion",
       "votes": 1,
       "id": "_v_WMIf"
+    },
+    {
+      "content": "probando connect",
+      "votes": 1,
+      "id": "i43iAHw"
     }
   ]
 }
